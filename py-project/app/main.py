@@ -1,6 +1,7 @@
 import utils
 import read_csv
 import chart
+import pandas as pd
 
 #Solución con GPT
 '''
@@ -18,6 +19,7 @@ def run():
 '''
 
 #Solución Clase
+'''
 def run():
     data = read_csv.read_csv('data.csv')
     #Se agrega un filtro por continente
@@ -35,6 +37,20 @@ def run():
         country = result[0]
         labels, values = utils.get_population(country)
         chart.generate_bar_chart(country['Country/Territory'], labels, values)
+
+
+data = read_csv.read_csv('data.csv')         
+'''
+
+
+#Solución con Pandas
+def run():
+    df = pd.read_csv('data.csv')
+    df = df[df['Continent'] == 'Africa']
+
+    countries = df['Country/Territory'].values
+    percentages = df['World Population Percentage'].values
+    chart.generate_pie_chart(countries, percentages)
 
 
 if __name__ == '__main__':
