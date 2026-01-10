@@ -9,7 +9,7 @@ def get_list():
 
 @app.get('/contact')
 def get_list():
-    return{name:'Platzi'}
+    return {'name':'Platzi'}
 
 def run():
     store.get_categories()
